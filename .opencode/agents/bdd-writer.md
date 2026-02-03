@@ -370,10 +370,10 @@ Before requesting approval, verify:
 Feature: Bot Authentication
   As a registered bot
   I want to authenticate using my API key
-  So that I can access the ClawMarket platform securely
+  So that I can access the platform securely
 
   Background:
-    Given the ClawMarket API is available
+    Given the API is available
 
   @smoke @authentication
   Scenario: Successful authentication with valid API key

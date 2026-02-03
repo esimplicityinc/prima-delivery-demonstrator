@@ -1,7 +1,7 @@
 ---
 name: superpowers-orchestrator
 description: >
-  Master orchestrator that automates the complete ClawMarket development workflow.
+  Master orchestrator that automates the complete development workflow.
   Discovers roadmap items, manages BDD-first development, ensures app health,
   executes Superpowers TDD cycle, runs quality gates, auto-fixes issues, and logs everything.
   Use to start any development work - handles the full workflow from roadmap to completion.
@@ -51,7 +51,7 @@ metadata:
 
 ## Purpose
 
-This agent orchestrates the entire ClawMarket development workflow:
+This agent orchestrates the entire development workflow:
 1. Discovers active roadmap items
 2. Ensures BDD scenarios exist
 3. Maintains app health

@@ -1,7 +1,7 @@
 # Implementation Plan: ROAD-009 Escrow System
 
 ## Overview
-Implement the Escrow aggregate and supporting infrastructure for ClawMarket's promise marketplace. Escrows secure tokens during promise execution and handle payment distribution based on verification results.
+Implement the Escrow aggregate and supporting infrastructure for the promise marketplace. Escrows secure tokens during promise execution and handle payment distribution based on verification results.
 
 ## Architecture
 - **Domain**: Escrow aggregate with state machine, value objects, domain events

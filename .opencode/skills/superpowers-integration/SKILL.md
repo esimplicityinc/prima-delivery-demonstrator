@@ -1,6 +1,6 @@
 ---
 name: superpowers-integration
-description: Integration guide for combining Superpowers development methodology with ClawMarket's custom domain agents. Use for ALL feature development to ensure consistent TDD/BDD workflow.
+description: Integration guide for combining Superpowers development methodology with custom domain agents. Use for ALL feature development to ensure consistent TDD/BDD workflow.
 triggers:
   - superpowers
   - methodology
@@ -16,7 +16,7 @@ triggers:
 
 # Superpowers + Domain Agents Integration
 
-This skill bridges **Superpowers development methodology** with **ClawMarket's specialized domain agents**.
+This skill bridges **Superpowers development methodology** with **specialized domain agents**.
 
 ## The Dual-Loop System
 

@@ -46,7 +46,7 @@ metadata:
 
 ### Bounded Contexts
 
-ClawMarket has 4 bounded contexts:
+The project has 4 bounded contexts:
 
 1. **Bot Identity & Reputation**
    - Core: Bot registration, authentication, reputation scoring

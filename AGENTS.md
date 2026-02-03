@@ -1,19 +1,10 @@
----
-title: Agent Documentation
-sidebar_position: 1
----
+# Agent Architecture
 
-# Agent Documentation
-
-This project uses AI agents orchestrated through OpenCode to automate development workflows.
+This document describes the agent architecture for the Prima Delivery Demonstrator project.
 
 ## Overview
 
 Agents are specialized AI assistants configured to handle specific aspects of the development workflow. They work together through an orchestration pattern, where high-level orchestrators delegate tasks to specialized subagents.
-
-For the full architecture specification, see:
-- [AGENTS.md](/AGENTS.md) - Agent architecture overview
-- [agentspec.md](/agentspec.md) - Workflow specifications
 
 ## Agent Categories
 
@@ -67,38 +58,24 @@ For the full architecture specification, see:
 | Type | Location |
 |------|----------|
 | Agent definitions | `.opencode/agents/*.md` |
-| Agent configuration | `opencode.json` |
+| Agent configuration | `opencode.json` → `agent` section |
 | Skills | `.opencode/skills/*/SKILL.md` |
 | Execution logs | `.opencode/logs/*.md` |
 
-## Quick Start
+## Naming Conventions
 
-### Invoke an Agent
+### Agent Files
+- Use kebab-case: `my-agent-name.md`
+- Match the key in `opencode.json`
 
-```bash
-# In OpenCode CLI
-@superpowers-orchestrator start
+### Agent IDs
+- Use kebab-case in `opencode.json` keys
+- Reference with `@agent-name` in prompts
 
-# Or directly mention an agent
-@bdd-writer create scenarios for ROAD-001
-```
-
-### Check Agent Status
-
-```bash
-# List all configured agents
-just --list  # Shows available commands including agent-related ones
-```
-
-## Skills
-
-Skills are reusable knowledge modules that agents can invoke:
-
-| Skill | Purpose |
-|-------|---------|
-| `clean-ddd-hexagonal` | DDD and Hexagonal Architecture patterns |
-| `superpowers-integration` | Superpowers TDD/BDD methodology |
-| `test-driven-development` | TDD discipline and best practices |
+### Skill Files
+- Directory name is the skill ID
+- Must contain `SKILL.md` file
+- Additional references in `references/` subdirectory
 
 ## Delegation Rules
 
@@ -113,3 +90,5 @@ Every feature must pass through:
 2. DDD alignment (`@ddd-aligner`)
 3. BDD test execution (`@bdd-runner`)
 4. CI validation (`@ci-runner`)
+
+See `agentspec.md` for detailed workflow specifications.

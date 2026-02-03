@@ -416,7 +416,7 @@ Minor Issues (Nice to Have):
 
   ⚠️ Success message could be more celebratory
      - Currently just "Success"
-     - Suggestion: "🎉 Welcome to ClawMarket, {botName}!"
+     - Suggestion: "🎉 Welcome, {botName}!"
 
   ⚠️ Email field doesn't validate format until submit
      - Could provide real-time hint (not error) for invalid format

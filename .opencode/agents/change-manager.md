@@ -316,7 +316,7 @@ Before marking as "published":
 ## Integration with Other Agents
 
 ### Called by
-- @clawmarket-orchestrator: When ROAD item completes
+- @superpowers-orchestrator: When ROAD item completes
 - @superpowers-orchestrator: When feature is done
 - @governance-orchestrator: To create CHANGE entries
 
@@ -382,5 +382,5 @@ just validate-changes
 
 ---
 
-**Maintained By**: ClawMarket Development Team  
-**Related**: [Governance System](../plans/2026-02-01-governance-agent-integration.md)
+**Maintained By**: Prima Delivery Team  
+**Related**: [Agent Specification](../../agentspec.md)

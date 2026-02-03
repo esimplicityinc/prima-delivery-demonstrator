@@ -295,7 +295,7 @@ BDD (Outer Loop)              TDD (Inner Loop)
 **BDD defines WHAT** the system should do (acceptance criteria).
 **TDD defines HOW** the code implements it (unit-level behavior).
 
-### Integration with ClawMarket Agents
+### Integration with Domain Agents
 
 ```
 @bdd-writer → Creates BDD scenarios (acceptance tests)
@@ -405,4 +405,4 @@ src/
 
 **Version**: 1.0.0
 **Last Updated**: 2026-01-31
-**Compatible With**: All ClawMarket domain agents
+**Compatible With**: All domain agents

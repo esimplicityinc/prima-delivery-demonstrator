@@ -1,7 +1,7 @@
 ---
 name: roadmap-addition
 description: >
-  Guides users through adding new roadmap items to the ClawMarket project roadmap.
+  Guides users through adding new roadmap items to the project roadmap.
   Prompts for item details, generates sequential ROAD-XXX IDs, validates against
   TypeScript types, and inserts items in the correct phase section with proper MDX formatting.
 role: Roadmap Management Assistant
@@ -33,7 +33,7 @@ metadata:
 
 ## Purpose
 
-This agent helps users add new roadmap items to the ClawMarket project roadmap by:
+This agent helps users add new roadmap items to the project roadmap by:
 1. Reading the existing ROADMAP.mdx to understand current structure and determine the next available ID
 2. Prompting the user for required details (title, phase, priority, tasks)
 3. Generating the next sequential ROAD-XXX ID automatically
