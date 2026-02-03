@@ -1,0 +1,148 @@
+/**
+ * ClawMarket Documentation Custom Styles
+ */
+
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Custom styles for DDD documentation */
+.ddd-diagram {
+  background-color: var(--ifm-background-surface-color);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+pre code {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Table styling */
+table {
+  display: table;
+  width: 100%;
+}
+
+/* Emoji in headers */
+.navbar__logo {
+  margin-right: 0.5rem;
+}
+
+/* Roadmap Dashboard Global Styles */
+.roadmap-dashboard {
+  padding: 1rem 0;
+}
+
+/* Status Badge Colors */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-proposed { background: rgba(107, 114, 128, 0.15); color: #6b7280; }
+.status-adr_validated { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+.status-bdd_pending { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; }
+.status-bdd_complete { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.status-implementing { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.status-nfr_validating { background: rgba(249, 115, 22, 0.15); color: #f97316; }
+.status-nfr_blocked { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+.status-complete { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+
+/* View Tabs */
+.view-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--ifm-color-emphasis-100);
+  padding: 0.25rem;
+  border-radius: 8px;
+}
+
+.view-tab {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.view-tab:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.view-tab.active {
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .roadmap-dashboard {
+    padding: 0.5rem;
+  }
+  
+  .view-tabs {
+    width: 100%;
+  }
+  
+  .view-tab {
+    flex: 1;
+    text-align: center;
+    padding: 0.625rem 0.5rem;
+  }
+}
+
+/* React Flow Customization */
+.react-flow__node {
+  font-family: var(--ifm-font-family-base);
+}
+
+.react-flow__attribution {
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Card Hover Effect */
+.roadmap-card {
+  transition: all 0.2s ease;
+}
+
+.roadmap-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
