@@ -1,0 +1,341 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["AGENTS.md", "agentspec.md"],
+
+  // === Built-in Tools ===
+  "tools": {
+    "bash": true,
+    "edit": true,
+    "glob": true,
+    "grep": true,
+    "list": true,
+    "patch": true,
+    "question": true,
+    "read": true,
+    "skill": true,
+    "todoread": true,
+    "todowrite": true,
+    "webfetch": true,
+    "write": true
+  },
+  "agent": {
+    "build": {
+      "mode": "primary",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "skill": true
+      },
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "just *": "allow",
+          "npm *": "allow",
+          "bun *": "allow",
+          "cd *": "allow",
+          "ls *": "allow",
+          "cat *": "allow",
+          "grep *": "allow",
+          "*": "ask"
+        }
+      }
+    },
+    "plan": {
+      "mode": "primary",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": false
+      },
+      "permission": {
+        "edit": "ask",
+        "bash": "ask"
+      }
+    },
+    "superpowers-orchestrator": {
+      "description": "Master orchestrator for automated development workflow. Discovers roadmap items, manages BDD-first development, executes Superpowers TDD, runs quality gates, auto-fixes issues, logs everything.",
+      "mode": "primary",
+      "prompt": "{file:./.opencode/agents/superpowers-orchestrator.md}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "skill": true,
+        "task": true
+      },
+      "permission": {
+        "edit": "allow",
+        "write": "allow",
+        "bash": {
+          "git *": "ask",
+          "gh *": "ask",
+          "git-commit": "ask",
+          "git-push": "ask",
+          "git-pull": "ask",
+          "git-merge": "ask",
+          "git-rebase": "ask",
+          "git-reset": "ask",
+          "git-checkout": "ask",
+          "git-branch": "ask",
+          "git-tag": "ask",
+          "*": "allow"
+        },
+        "task": {
+          "*": "allow"
+        }
+      }
+    },
+    "code-writer": {
+      "description": "Writes code following DDD and Hexagonal Architecture",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/code-writer.md}",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "skill": true
+      },
+      "permission": {
+        "task": {
+          "*": "deny",
+          "bdd-writer": "allow",
+          "architecture-inspector": "allow",
+          "ddd-aligner": "allow"
+        }
+      }
+    },
+    "bdd-runner": {
+      "description": "Runs BDD tests and reports results",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/bdd-runner.md}",
+      "tools": {
+        "bash": true,
+        "read": true
+      },
+      "permission": {
+        "task": {
+          "*": "deny",
+          "code-writer": "allow",
+          "site-keeper": "allow",
+          "ci-runner": "allow"
+        }
+      }
+    },
+    "bdd-writer": {
+      "description": "Writes Gherkin feature files for BDD scenarios",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/bdd-writer.md}",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true
+      },
+      "permission": {
+        "edit": "ask"
+      }
+    },
+    "architecture-inspector": {
+      "description": "Verifies hexagonal architecture compliance",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/architecture-inspector.md}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "grep": true,
+        "glob": true
+      }
+    },
+    "ddd-aligner": {
+      "description": "Ensures DDD compliance and ubiquitous language",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/ddd-aligner.md}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "grep": true,
+        "glob": true
+      }
+    },
+    "ci-runner": {
+      "description": "Runs CI checks including lint and typecheck",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/ci-runner.md}",
+      "tools": {
+        "bash": true,
+        "read": true
+      },
+      "permission": {
+        "task": {
+          "*": "deny",
+          "code-writer": "allow",
+          "bdd-runner": "allow"
+        }
+      }
+    },
+    "site-keeper": {
+      "description": "Manages development servers and troubleshoots",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/site-keeper.md}",
+      "tools": {
+        "bash": true,
+        "read": true
+      },
+      "permission": {
+        "bash": {
+          "just *": "allow",
+          "lsof *": "allow",
+          "kill *": "allow",
+          "curl *": "allow",
+          "ps *": "allow",
+          "cd *": "allow",
+          "ls *": "allow",
+          "cat *": "allow",
+          "rm *": "allow"
+        }
+      }
+    },
+    "ux-ui-inspector": {
+      "description": "Reviews UI for accessibility and UX best practices",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/ux-ui-inspector.md}",
+      "tools": {
+        "read": true,
+        "bash": true
+      }
+    },
+    "agent-manager": {
+      "description": "Top-level orchestrator for managing agents and skills. Modes: create, edit, analyze.",
+      "mode": "primary",
+      "prompt": "{file:./.opencode/agents/agent-manager.md}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "question": true,
+        "task": true
+      },
+      "permission": {
+        "edit": "allow",
+        "bash": {
+          "just *": "allow",
+          "git *": "allow",
+          "ls *": "allow",
+          "cat *": "allow",
+          "grep *": "allow",
+          "find *": "allow",
+          "*": "ask"
+        },
+        "task": {
+          "*": "allow"
+        }
+      }
+    },
+    "agent-creator": {
+      "description": "Guides users through questionnaire to design and create new agents",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/agent-creator.md}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "question": true
+      },
+      "permission": {
+        "edit": "allow",
+        "write": {
+          ".opencode/agents/*": "allow",
+          "opencode.json": "allow",
+          "*": "ask"
+        }
+      }
+    },
+    "agent-editor": {
+      "description": "Helps edit existing agents by comparing documentation with behavior",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/agent-editor.md}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "question": true
+      },
+      "permission": {
+        "edit": "ask"
+      }
+    },
+    "agent-analyzer": {
+      "description": "Analyzes session files to identify agent improvement opportunities",
+      "mode": "subagent",
+      "prompt": "{file:./.opencode/agents/agent-analyzer.md}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "bash": true,
+        "glob": true
+      },
+      "permission": {
+        "read": "allow",
+        "write": {
+          ".opencode/analysis/*": "allow",
+          "*": "ask"
+        }
+      }
+    },
+    "roadmap-addition": {
+      "description": "Adds new roadmap items to the ClawMarket project roadmap with proper formatting and ID generation",
+      "mode": "primary",
+      "prompt": "{file:./.opencode/agents/roadmap-addition.md}",
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "question": true
+      },
+      "permission": {
+        "read": "allow",
+        "edit": {
+          "docs/ROADMAP.mdx": "allow",
+          "*": "ask"
+        },
+        "write": {
+          "docs/ROADMAP.mdx": "allow",
+          "*": "ask"
+        }
+      }
+    }
+  },
+  "mcp": {
+    "fetch": {
+      "type": "local",
+      "command": ["npx", "-y", "mcp-server-fetch"],
+      "enabled": true
+    },
+    "g-search": {
+      "type": "local",
+      "command": ["npx", "-y", "g-search-mcp"],
+      "enabled": true
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "@playwright/mcp@latest"],
+      "enabled": true
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": true
+    }
+  },
+  "permission": {
+    "skill": {
+      "*": "allow"
+    },
+    "bash": {
+      "git *": "ask",
+      "*": "ask"
+    }
+  }
+}
